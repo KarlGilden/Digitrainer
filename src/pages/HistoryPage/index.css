@@ -5,8 +5,24 @@
     height: 100vh;
     padding: 50px 50px;
   }
+
+  .history-title{
+      margin-bottom: 25px;
+  }
+
+.history-tab{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    box-shadow: rgba(0, 0, 0, 0.363) 0px 1px 4px;
+
+}
 @media screen and (max-width: 700px){
     .historypage{
         margin-left: 0;
+        width: 100%;
     }
 }

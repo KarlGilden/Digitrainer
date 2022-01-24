@@ -3,10 +3,11 @@ import './index.css'
 
 function Dashboard() {
   return (
+    <>
     <div className="dashboard">
             <h1>Your Dashboard</h1>
     </div>
-  
+  </>
   );
 }
 

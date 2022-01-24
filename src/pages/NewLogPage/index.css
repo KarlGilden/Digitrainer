@@ -4,10 +4,108 @@
     width: var(--page-size);
     height: 100vh;
     padding: 50px 50px;
+    z-index: 5;
   }
+
+.input-container{
+  max-width: 500px;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  margin: 50px auto;
+  padding-bottom: 50px;
+}
+
+.input{
+  margin: 15px 0;
+}
+
+.date-input{
+  width: 150px;
+}
+
+.time-input{
+  width: 150px;
+}
+
+.title-input{
+  padding: 10px;
+  font-size: 24px;
+}
+
+.notes-input{
+  height: 150px;
+  max-height: 250px;
+  max-width: 100%;
+  min-width: 100%;
+  padding: 10px;
+}
+
+.slider-value{
+  text-align: center;
+  font-size: 24px;
+}
+
+.exercises-dropdown-header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.363) 0px 1px 4px;
+  cursor: pointer;
+}
+
+.submit-btn{
+  background-color: var(--secondary);
+  width: 100%;
+  padding: 15px;
+  border-radius: 10px;
+  border: none;
+  color: #fff;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  box-shadow: rgba(0, 0, 0, 0.363) 0px 1px 4px;
+}
+
+
+.add-exercise{
+  background-color: var(--secondary);
+  width: fit-content;
+  padding: 15px;
+  border-radius: 10px;
+  color: #fff;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: rgba(0, 0, 0, 0.363) 0px 1px 4px;
+}
+.add-exercise-icon{
+  font-size: 24px;
+  color: #fff;
+  margin-left: 10px;
+}
+
+.exercises{
+  padding: 10px 25px;
+}
+.exercises p{
+  border-bottom: solid 1px lightgrey;
+}
+  
+.add-icon{
+  color: var(--secondary);
+  font-size: 24px;
+}
 
   @media screen and (max-width: 700px){
     .newlogpage{
         margin-left: 0;
+        width: 100%;
     }
 }

@@ -1,0 +1,98 @@
+.homepage{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+}
+
+.hero{
+    width: 50%;
+    height: 100vh;
+    padding: 100px 100px;
+}
+
+.hero-text{
+    font-size: 16px;
+}
+
+.hero-alt-text{
+    margin-bottom: 25px;
+}
+
+.hero-title{
+    font-size: 42px;
+    margin-bottom: 25px;
+}
+
+.login{
+    width: 50%;
+    height: 100vh;
+    background-color: var(--secondary);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 100px 150px;
+}
+
+.login-element{
+    margin-bottom: 15px;
+}
+
+.login-header{
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.login-input{
+    border: 1px var(--secondary-dark) solid;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 2px;
+}
+
+
+.login-btn{
+    padding: 10px;
+    border-radius: 2px;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.alt-login-btns{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.submit-login-btn{
+    border: 1px var(--secondary-dark) solid;
+    background-color: var(--secondary-dark);
+    color: #fff;
+}
+
+.continue-with{
+    text-align: center;
+}
+
+.fb{
+    color: #4267B2;
+}
+
+.alt-login-btn{
+    padding: 15px;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100px;
+
+}
+
+.login-icon{
+    width: 30px;
+    height: 30px;
+}
+
+.color-span{
+    color: var(--secondary);
+}
