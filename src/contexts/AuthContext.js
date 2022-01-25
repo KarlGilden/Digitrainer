@@ -38,6 +38,12 @@ export function AuthProvider({children}) {
         }
     }
 
+    const update = async (email, handle) => {
+        updateProfile(auth.currentUser, {
+            displayName: handle
+          })
+    }
+
     const login = async (email, password) => {
         try {
             await signInWithEmailAndPassword(auth, email, password)
