@@ -4,6 +4,7 @@ import Dashboard from '../Dashboard';
 import HistoryPage from '../HistoryPage';
 import NewLogPage from '../NewLogPage';
 import {Routes, Route} from 'react-router-dom';
+import Profile from '../Profile';
 
 
 function User() {
@@ -14,6 +15,8 @@ function User() {
           <Route exact path='/' element={<Dashboard/>}></Route>
           <Route path='new-log' element={<NewLogPage/>}></Route>
           <Route path='history' element={<HistoryPage/>}></Route>
+          <Route path='profile' element={<Profile/>}></Route>
+
     </Routes>
   </>
   );

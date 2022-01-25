@@ -11,6 +11,10 @@
     transition: 0.5s;
 }
 
+.link {
+    text-decoration: underline;
+}
+
 label{
     margin-right: 5px;
 }

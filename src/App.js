@@ -5,6 +5,7 @@ import User from './pages/User';
 import { AuthProvider } from './contexts/AuthContext';
 import PrivateRoute from './components/PrivateRoute';
 import LoggedinRedirect from './components/LoggedinRedirect';
+import SignupPage from './pages/SignupPage';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
 
         <Routes>
           <Route path='/' element={<LoggedinRedirect><Home/></LoggedinRedirect>}/>
+          <Route path='/signup' element={<LoggedinRedirect><SignupPage/></LoggedinRedirect>}/>
           <Route path='/user/*' element={<PrivateRoute><User/></PrivateRoute>}/>
         </Routes>
         </AuthProvider>

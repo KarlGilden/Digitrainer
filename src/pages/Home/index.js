@@ -2,7 +2,7 @@ import React, {useRef, useState} from 'react';
 import './index.css'
 import {FcGoogle} from 'react-icons/fc'
 import {BsFacebook} from 'react-icons/bs'
-import {useNavigate} from 'react-router-dom'
+import {useNavigate, Link} from 'react-router-dom'
 import Button from '../../components/Button';
 import { useAuth } from '../../contexts/AuthContext'
 
@@ -32,7 +32,7 @@ function Home() {
         <h1 className="hero-title"><span className="color-span">Digi</span>trainer</h1>
         <p className="hero-text">A place for you to log and analyse your training sessions over time. </p>
         <h3 className="hero-alt-text">Coming to mobile soon...</h3>
-        <Button text="Sign up now!"/>
+        <Link to="/signup"><Button text="Sign up now!"/></Link>
       </div>  
       <div className="login">
         <div className="login-wrapper">

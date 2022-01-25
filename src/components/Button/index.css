@@ -7,3 +7,7 @@
     background-color: var(--secondary);
     cursor: pointer;
 }
+
+.dark{
+    background-color: var(--secondary-dark);
+}

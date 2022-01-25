@@ -29,7 +29,12 @@ function Sidenav() {
                     <div className="profile-circle">
 
                     </div>
-                    <h1>{user.email}</h1>
+                    <h1>{user.displayName ? 
+                    user.displayName
+                    : 
+                    "no name"
+                    }</h1>
+                    <Link to="/user/profile" className="link">Edit profile</Link>
                 </div>
             </div>
             <ul className="nav-list">
