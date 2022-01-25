@@ -1,11 +1,31 @@
-import React from 'react';
+import React, {useRef, useState} from 'react';
 import './index.css'
 import {FcGoogle} from 'react-icons/fc'
 import {BsFacebook} from 'react-icons/bs'
 import {useNavigate} from 'react-router-dom'
 import Button from '../../components/Button';
+import { useAuth } from '../../contexts/AuthContext'
+
 function Home() {
   const navigate = useNavigate()
+  const { login } = useAuth()
+  const [loading, setLoading] = useState()
+  const [error, setError] = useState()
+  const emailRef = useRef();
+  const passwordRef = useRef();
+
+  const handleSubmit = async () =>{
+    setLoading(true)
+    const error = await login(emailRef.current.value, passwordRef.current.value)
+    if(error){
+        setLoading(false)
+        return setError(error.message)
+    }else{
+        setLoading(false)
+        navigate('/user')
+    }
+  }
+
   return (
   <div className="homepage">
       <div className="hero">
@@ -17,9 +37,9 @@ function Home() {
       <div className="login">
         <div className="login-wrapper">
           <h1 className="login-header">Login</h1>
-          <input className="login-element login-input" type="text" placeholder="Username or Email"/>
-          <input className="login-element login-input" type="password" placeholder="Password"/>
-          <button className="login-element login-btn submit-login-btn" onClick={()=>{navigate('/user/')}}>Submit</button>
+          <input className="login-element login-input" type="text" placeholder="Username or Email" ref={emailRef}/>
+          <input className="login-element login-input" type="password" placeholder="Password" ref={passwordRef}/>
+          <button disabled={loading} className="login-element login-btn submit-login-btn" onClick={()=>{handleSubmit()}}>Submit</button>
           <p className="login-element continue-with">or continue with</p>
           <div className="alt-login-btns">
             <button className="login-element login-btn alt-login-btn"><FcGoogle className="login-icon"/></button>
