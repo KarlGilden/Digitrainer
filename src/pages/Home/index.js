@@ -15,14 +15,16 @@ function Home() {
         <Button text="Sign up now!"/>
       </div>  
       <div className="login">
-        <h1 className="login-header">Login</h1>
-        <input className="login-element login-input" type="text" placeholder="Username or Email"/>
-        <input className="login-element login-input" type="password" placeholder="Password"/>
-        <button className="login-element login-btn submit-login-btn" onClick={()=>{navigate('/user/')}}>Submit</button>
-        <p className="login-element continue-with">or continue with</p>
-        <div className="alt-login-btns">
-          <button className="login-element login-btn alt-login-btn"><FcGoogle className="login-icon"/></button>
-          <button className="login-element login-btn alt-login-btn"><BsFacebook className="login-icon fb"/></button>
+        <div className="login-wrapper">
+          <h1 className="login-header">Login</h1>
+          <input className="login-element login-input" type="text" placeholder="Username or Email"/>
+          <input className="login-element login-input" type="password" placeholder="Password"/>
+          <button className="login-element login-btn submit-login-btn" onClick={()=>{navigate('/user/')}}>Submit</button>
+          <p className="login-element continue-with">or continue with</p>
+          <div className="alt-login-btns">
+            <button className="login-element login-btn alt-login-btn"><FcGoogle className="login-icon"/></button>
+            <button className="login-element login-btn alt-login-btn"><BsFacebook className="login-icon fb"/></button>
+          </div>
         </div>
       </div>
   </div>
