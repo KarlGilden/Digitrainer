@@ -34,13 +34,13 @@ function Sidenav() {
                     : 
                     "no name"
                     }</h1>
-                    <Link to="/user/profile" className="link">Edit profile</Link>
+                    <Link to="/user/profile" className="link" onClick={isActive ? toggleMenu : ''}>Edit profile</Link>
                 </div>
             </div>
             <ul className="nav-list">
-                <Link to="/user/"><li className="list-item">Dashboard</li></Link>
-                <Link to="/user/new-log"><li className="list-item">New Log</li></Link>
-                <Link to="/user/history"><li className="list-item">History</li></Link>
+                <Link to="/user/" onClick={isActive ? toggleMenu : ''}><li className="list-item">Dashboard</li></Link>
+                <Link to="/user/new-log" onClick={isActive ? toggleMenu : ''}><li className="list-item">New Log</li></Link>
+                <Link to="/user/history" onClick={isActive ? toggleMenu : ''}><li className="list-item">History</li></Link>
                 <Link to="/" onClick={logout} ><li className="list-item">Log out</li></Link>
 
             </ul>

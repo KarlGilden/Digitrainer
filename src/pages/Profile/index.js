@@ -1,14 +1,17 @@
 import React, {useState} from 'react';
 import './index.css'
 import {useAuth} from '../../contexts/AuthContext'
+
 function Profile() {
-  const {user} = useAuth();
+  const {user, update} = useAuth();
   const [email, setEmail] = useState(user.email)
   const [name, setName] = useState(user.displayName)
 
   const handleSubmit = () => {
-    console.log(email, name)
+    update(user, email, name)
+
   }
+
   return (
   <div className="profile-page">
     <h1 className="profile-title">Profile</h1>

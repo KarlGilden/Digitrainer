@@ -38,9 +38,10 @@ export function AuthProvider({children}) {
         }
     }
 
-    const update = async (email, handle) => {
-        updateProfile(auth.currentUser, {
-            displayName: handle
+    const update = async (uid, email, handle) => {
+        updateProfile(uid, {
+            displayName: handle,
+            email: email
           })
     }
 
@@ -61,7 +62,8 @@ export function AuthProvider({children}) {
         user,
         signup,
         login,
-        logout
+        logout,
+        update
     }
 
 
