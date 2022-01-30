@@ -1,7 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import './index.css'
+import {useAuth} from '../../contexts/AuthContext'
+import HistoryCard from '../../components/HistoryCard';
 function HistoryPage() {
-
+  const {user} = useAuth()
   const [history, setHistory] = useState([])
   const [loading, setLoading] = useState(true)
 
@@ -11,7 +13,7 @@ function HistoryPage() {
 
   const getData = async () => {
     setLoading(true)
-    fetch('https://localhost:44379/api/GetAllTrainingLogs')
+    fetch('https://localhost:44379/api/GetUserTrainingLogs/'+ user.uid)
     .then(response => response.json())
     .then(data => {
       setHistory(data)
@@ -27,9 +29,7 @@ function HistoryPage() {
       <>
       {history.map((value)=>{
         return(
-          <div className="history-tab" key={value.id}>
-              <h3>{value.title}</h3>
-          </div>
+          <HistoryCard key={value.id} id={value.id} title={value.title} date={value.date}/>
         )
       })}
       </>

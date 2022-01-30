@@ -5,6 +5,7 @@ import HistoryPage from '../HistoryPage';
 import NewLogPage from '../NewLogPage';
 import {Routes, Route} from 'react-router-dom';
 import Profile from '../Profile';
+import LogView from '../LogView';
 
 
 function User() {
@@ -16,6 +17,8 @@ function User() {
           <Route path='new-log' element={<NewLogPage/>}></Route>
           <Route path='history' element={<HistoryPage/>}></Route>
           <Route path='profile' element={<Profile/>}></Route>
+          <Route path='log/:id' element={<LogView/>}></Route>
+
 
     </Routes>
   </>

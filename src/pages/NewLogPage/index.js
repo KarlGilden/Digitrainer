@@ -3,24 +3,47 @@ import './index.css'
 import {FaPlus} from 'react-icons/fa'
 import Slider from 'react-input-slider';
 import Button from '../../components/Button'
-
+import {useAuth} from '../../contexts/AuthContext'
 function NewLogPage() {
-
+  const {user} = useAuth()
   const [title, setTitle] = useState('');
   const [datetime, setDatetime] = useState(null);
   const [sessionTime, setSessionTime] = useState(null)
   const [notes, setNotes] = useState('')
   const [sliderValue, setSliderValue] = useState({x:0});
-  const [exercises, setExercises] = useState(["3x10 pushups", "3x10 pullups"]);
+  const [exercises, setExercises] = useState([{"name":"3x10 pushups"}, {"name":"3x10 pullups"}]);
   const [showExercises, setShowExercises] = useState(true)
 
   const handleSubmit = () => {
-    console.log(datetime)
-    console.log(title)
-    console.log(sessionTime)
-    console.log(sliderValue)
-    console.log(exercises)
-    console.log(notes)
+    fetch('https://localhost:44379/api/AddTrainingLog',{
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+        "accept": "text/plain"
+      },
+      body: JSON.stringify({
+          title: title,
+          date: datetime,
+          trainingTime: {
+            ticks: 0,
+            days: 0,
+            hours: 0,
+            milliseconds: 0,
+            minutes: 0,
+            seconds: 0,
+            totalDays: 0,
+            totalHours: 0,
+            totalMilliseconds: 0,
+            totalMinutes: 0,
+            totalSeconds: 0
+          },
+          exercises: exercises,
+          sessionQuality: 0,
+          notes: notes,
+          userId: user.uid
+        
+      })
+    })
 
   }
 
@@ -57,7 +80,7 @@ function NewLogPage() {
           {exercises && 
           <div className="exercises">
             {showExercises && exercises.map((value)=>{
-              return <p>{value}</p>
+              return <p>{value.name}</p>
             })}
           </div>
         }
@@ -101,7 +124,7 @@ function NewLogPage() {
         onChange={(e)=>setNotes(e.target.value)}
         />
 
-          <Button text="Submit" className="submit-btn" onClick={()=>{handleSubmit()}}></Button>
+          <button text="Submit" className="submit-btn" onClick={()=>{handleSubmit()}}>Submit</button>
 
         </div>
 

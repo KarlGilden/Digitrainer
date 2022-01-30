@@ -1,18 +1,14 @@
-.historypage{
+.logview-page{
     display: inline-block;
     margin-left: var(--sidenav-size);
     width: var(--page-size);
     height: 100vh;
     padding: 50px 50px;
+    z-index: 5;
   }
 
-  .history-title{
-      margin-bottom: 25px;
-  }
-
-
-@media screen and (max-width: 700px){
-    .historypage{
+  @media screen and (max-width: 700px){
+    .logview-page{
         margin-left: 0;
         width: 100%;
     }

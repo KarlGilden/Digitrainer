@@ -1,0 +1,10 @@
+.history-tab{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border-radius: 2px;
+    margin-bottom: 10px;
+    box-shadow: rgba(0, 0, 0, 0.363) 0px 1px 4px;
+    cursor: pointer;
+}
