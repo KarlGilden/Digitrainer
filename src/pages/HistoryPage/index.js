@@ -9,7 +9,7 @@ function HistoryPage() {
 
   useEffect(()=>{
     getData()
-  });
+  }, []);
 
   const getData = async () => {
     setLoading(true)

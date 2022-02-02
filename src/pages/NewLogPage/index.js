@@ -6,15 +6,20 @@ import Button from '../../components/Button'
 import {useAuth} from '../../contexts/AuthContext'
 function NewLogPage() {
   const {user} = useAuth()
+  const sessionTime = new Date('August 19, 1975 00:00:00')
   const [title, setTitle] = useState('');
   const [datetime, setDatetime] = useState(null);
-  const [sessionTime, setSessionTime] = useState(null)
+  const [sessionHr, setSessionHr] = useState(null)
+  const [sessionMin, setSessionMin] = useState(null)
   const [notes, setNotes] = useState('')
   const [sliderValue, setSliderValue] = useState({x:0});
   const [exercises, setExercises] = useState([{"name":"3x10 pushups"}, {"name":"3x10 pullups"}]);
   const [showExercises, setShowExercises] = useState(true)
 
   const handleSubmit = () => {
+    sessionTime.setHours(sessionHr)
+    sessionTime.setMinutes(sessionMin)
+    console.log(sessionTime)
     fetch('https://localhost:44379/api/AddTrainingLog',{
       method: 'POST',
       headers: {
@@ -24,21 +29,9 @@ function NewLogPage() {
       body: JSON.stringify({
           title: title,
           date: datetime,
-          trainingTime: {
-            ticks: 0,
-            days: 0,
-            hours: 0,
-            milliseconds: 0,
-            minutes: 0,
-            seconds: 0,
-            totalDays: 0,
-            totalHours: 0,
-            totalMilliseconds: 0,
-            totalMinutes: 0,
-            totalSeconds: 0
-          },
+          trainingTime: sessionTime.toLocaleTimeString(),
           exercises: exercises,
-          sessionQuality: 0,
+          sessionQuality: sliderValue.x,
           notes: notes,
           userId: user.uid
         
@@ -66,8 +59,14 @@ function NewLogPage() {
           <label>Session time:</label>
           <input 
           className="time-input" 
-          type="time" 
-          onChange={(e)=>setSessionTime(e.target.value)}
+          type="number" 
+          onChange={(e)=>setSessionHr(e.target.value)}
+          />
+          :
+          <input 
+          className="time-input" 
+          type="number" 
+          onChange={(e)=>setSessionMin(e.target.value)}
           />
         </div>
 

@@ -5,7 +5,7 @@ import {useParams} from 'react-router-dom'
 function LogView() {
 
     let {id} = useParams()
-
+    const [exercises, setExercises] = useState([])
     const [log, setLog] = useState({});
     const [loading, setLoading] = useState(true);
 
@@ -21,6 +21,12 @@ function LogView() {
             setLog(data)
             console.log(data)
         })
+        fetch('https://localhost:44379/api/GetExercisesById/'+ id)
+        .then(response => response.json())
+        .then(data => {
+          setExercises(data)
+          console.log(data)
+        })
         setLoading(false)
     }
 
@@ -33,6 +39,14 @@ function LogView() {
           <>
            <h1>{log.title}</h1>
             <small>{log.date}</small>
+            <hr />
+            {exercises.map((value)=>{
+                return <h3 key={value.id}>{value.name}</h3>
+            })}
+            <hr />
+            <p>Session time: {log.trainingTime}</p>
+            <p>Session quality: {log.sessionQuality}</p>
+            <h3>Notes:</h3>
             <p>{log.notes}</p>
           </>
           }
