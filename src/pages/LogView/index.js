@@ -1,10 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import './index.css'
-import {useParams} from 'react-router-dom'
-
+import {useParams, useNavigate} from 'react-router-dom'
+import {AiFillEdit, AiOutlineEdit} from 'react-icons/ai'
 function LogView() {
 
     let {id} = useParams()
+    const navigate = useNavigate()
     const [exercises, setExercises] = useState([])
     const [log, setLog] = useState({});
     const [loading, setLoading] = useState(true);
@@ -37,7 +38,10 @@ function LogView() {
             <h1>Loading...</h1>
           </div> :
           <>
-           <h1>{log.title}</h1>
+            <div className='log-header'>
+              <h1>{log.title}</h1>
+              <AiOutlineEdit onClick={()=>{navigate('/user/edit/'+id)}} className='edit-btn'/>
+            </div>
             <small>{log.date}</small>
             <hr />
             {exercises.map((value)=>{

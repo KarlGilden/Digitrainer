@@ -1,10 +1,13 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './index.css'
 import {FaPlus} from 'react-icons/fa'
 import Slider from 'react-input-slider';
 import {useAuth} from '../../contexts/AuthContext'
-function NewLogPage() {
+import {useParams} from 'react-router-dom'
+
+function EditLogPage() {
   const {user} = useAuth()
+  let {id} = useParams()
   const [title, setTitle] = useState('');
   const [exerName, setExerName] = useState('')
   const [exerSets, setExerSets] = useState(null)
@@ -18,14 +21,41 @@ function NewLogPage() {
   const [exercises, setExercises] = useState([]);
   const [showModal, setShowModal] = useState(false)
 
+  useEffect(()=>{
+    getData()
+  }, [])
+
+  const getData = () =>{
+    fetch('https://localhost:44379/api/GetTrainingLogById/'+id)
+    .then(response => response.json())
+    .then(data => {
+        const tempSessionTime = data.trainingTime.split(':')
+        console.log(tempSessionTime)
+        setTitle(data.title)
+        setDatetime(data.date)
+        setNotes(data.notes)
+        setSliderValue({...sliderValue, x: data.sessionQuality})
+        setSessionHr(tempSessionTime[0])
+        setSessionMin(tempSessionTime[1])
+        console.log(data)
+    })
+    fetch('https://localhost:44379/api/GetExercisesById/'+ id)
+    .then(response => response.json())
+    .then(data => {
+      setExercises(data)
+      console.log(data)
+    })
+}
+
   const handleSubmit = () => {
-    fetch('https://localhost:44379/api/AddTrainingLog',{
+    fetch('https://localhost:44379/api/UpdateTrainingLog',{
       method: 'POST',
       headers: {
         'content-type': 'application/json',
         "accept": "text/plain"
       },
       body: JSON.stringify({
+          id: id,
           title: title,
           date: datetime,
           trainingTime: sessionHr + ":" + sessionMin,
@@ -94,16 +124,17 @@ function NewLogPage() {
           </div>
     }
 
-      <h1>New Log</h1>
+      <h1>Edit Log</h1>
       <div className="input-container">
         <input 
         className="date-input" 
         type="datetime-local" 
+        value={datetime}
         onChange={(e)=>setDatetime(e.target.value)}
         />
         <input 
         className="title-input input" 
-        placeholder="Title" 
+        value={title} 
         type="text" 
         onChange={(e)=>setTitle(e.target.value)}
         />
@@ -112,12 +143,14 @@ function NewLogPage() {
           <input 
           className="time-input" 
           type="number" 
+          value={sessionHr}
           onChange={(e)=>setSessionHr(e.target.value)}
           />
           :
           <input 
           className="time-input" 
           type="number" 
+          value={sessionMin}
           onChange={(e)=>setSessionMin(e.target.value)}
           />
         </div>
@@ -136,13 +169,6 @@ function NewLogPage() {
           </div>
         }
         </div>
-        
-        {!exercises && 
-          <div className="add-exercise input" >
-            <h3>Add Exercise</h3>
-            <FaPlus className="add-exercise-icon"/>
-          </div>
-        }
 
         <label>Session quality / 10</label>
         <Slider
@@ -172,6 +198,7 @@ function NewLogPage() {
         className="notes-input input" 
         placeholder="Notes..." 
         type="text" 
+        value={notes}
         onChange={(e)=>setNotes(e.target.value)}
         />
 
@@ -184,4 +211,4 @@ function NewLogPage() {
   );
 }
 
-export default NewLogPage;
+export default EditLogPage;

@@ -5,6 +5,7 @@
     height: 100vh;
     padding: 50px 50px;
     z-index: 5;
+    position: relative;
   }
 
 .input-container{
@@ -97,7 +98,70 @@
 .exercises p{
   border-bottom: solid 1px lightgrey;
 }
-  
+
+.add-exercise-modal-wrapper{
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.397);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-y: hidden;
+  z-index: 100;
+}
+
+.add-exercise-title{
+  text-align: center;
+}
+
+
+
+.add-exercise-modal{
+  background-color: #fff;
+  max-width: 500px;
+  width: 100%;
+  height: 250px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.add-exercise-inputs{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 25px;
+}
+
+.exercise-buttons{
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.exercise-button{
+  width: fit-content;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  width: 150px;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.363) 0px 1px 4px;
+  cursor: pointer;
+
+}
+
+
+  .colored{
+    background-color: var(--secondary);
+    color: #fff;
+  }
 .add-icon{
   color: var(--secondary);
   font-size: 24px;
@@ -107,5 +171,9 @@
     .newlogpage{
         margin-left: 0;
         width: 100%;
+    }
+
+    .add-exercise-modal-wrapper{
+      position: fixed;
     }
 }
