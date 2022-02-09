@@ -3,18 +3,17 @@
     margin-left: var(--sidenav-size);
     width: var(--page-size);
     height: 100vh;
-    padding: 50px 50px;
     z-index: 5;
     position: relative;
   }
 
 .input-container{
-  max-width: 500px;
+  max-width: 750px;
   height: fit-content;
   display: flex;
   flex-direction: column;
-  margin: 50px auto;
-  padding-bottom: 50px;
+  padding: 50px 50px;
+  margin: 0 auto;
 }
 
 .input{
@@ -157,6 +156,14 @@
 
 }
 
+.new-log-header{
+  background-color: white;
+  padding: 50px 50px 0px 50px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
 
   .colored{
     background-color: var(--secondary);
@@ -171,6 +178,19 @@
     .newlogpage{
         margin-left: 0;
         width: 100%;
+    }
+
+    .input-container{
+      padding: 25px;
+    }
+    .new-log-header{
+      background-color: var(--secondary);
+      justify-content: center;
+      padding: 25px;
+    }
+
+    .log-title{
+      text-align: center;
     }
 
     .add-exercise-modal-wrapper{

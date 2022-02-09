@@ -94,7 +94,9 @@ function NewLogPage() {
           </div>
     }
 
-      <h1>New Log</h1>
+      <div className="new-log-header">`
+      <h1 className='log-title'>Create a new log</h1>
+      </div>
       <div className="input-container">
         <input 
         className="date-input" 

@@ -124,7 +124,9 @@ function EditLogPage() {
           </div>
     }
 
-      <h1>Edit Log</h1>
+      <div className="new-log-header">`
+        <h1 className='log-title'>Edit a log</h1>
+      </div>
       <div className="input-container">
         <input 
         className="date-input" 
