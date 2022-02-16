@@ -3,7 +3,9 @@ import './index.css'
 import {FaPlus} from 'react-icons/fa'
 import Slider from 'react-input-slider';
 import {useAuth} from '../../contexts/AuthContext'
+import {useNavigate} from 'react-router-dom'
 function NewLogPage() {
+  const navigate = useNavigate()
   const {user} = useAuth()
   const [title, setTitle] = useState('');
   const [exerName, setExerName] = useState('')
@@ -36,7 +38,7 @@ function NewLogPage() {
         
       })
     })
-
+    navigate('/user/')
   }
 
   const handleExerSubmit = () =>{
